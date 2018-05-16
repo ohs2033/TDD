@@ -30,7 +30,7 @@ public class ElevatorTest {
     }
 
     @Test
-    public void 타겟층을_설정한후_그_층으로_이동() {
+    public void 타겟층을_설정한후_그_층으로_이동() throws Exception {
         Elevator ev = new Elevator();
 
         ev.clickButton(4);
@@ -48,9 +48,26 @@ public class ElevatorTest {
         assertEquals(10, ev.getFloor());
     }
 
+    @Test
+    public void 문을_열고_닫을수_있어야_함() {
+        Elevator ev = new Elevator();
+        ev.setIsOpen(true);
+        assertEquals(true, ev.getIsOpen());
+
+        ev.setIsOpen(false);
+        assertEquals(false, ev.getIsOpen());
+    }
+
     //이동하기 전에는 문이 닫혀야 함.
     @Test(expected = Exception.class)
-    public void 이동하기_전에_문이_닫혀야_함() {
+    public void 이동하기_전에_문이_닫혀야_함() throws Exception {
+        Elevator ev = new Elevator();
+
+        ev.setIsOpen(true);
+        ev.clickButton(10);
+        ev.moveToTarget();
+
+        System.out.println("HIHI");
 
     }
 

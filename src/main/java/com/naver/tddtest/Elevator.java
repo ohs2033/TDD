@@ -8,7 +8,10 @@ public class Elevator {
         this.targetFloor = floor;
     }
 
-    public void moveToTarget() {
+    public void moveToTarget() throws Exception {
+        if (this.isOpen) {
+            throw new Exception("Elevator door is still open.");
+        }
         this.floor = this.targetFloor;
     }
 
@@ -24,6 +27,11 @@ public class Elevator {
     public boolean getIsOpen() {
         return this.isOpen;
     }
+
+    public void setIsOpen(boolean isOpen) {
+        this.isOpen = isOpen;
+    }
+
 
 
 
