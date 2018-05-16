@@ -12,9 +12,6 @@ public class Elevator {
         this.floor = this.targetFloor;
     }
 
-    public static void main(){
-
-    }
 
     public int getFloor () {
         return this.floor;

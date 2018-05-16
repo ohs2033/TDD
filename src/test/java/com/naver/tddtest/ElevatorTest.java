@@ -5,7 +5,6 @@ import static org.junit.Assert.*;
 
 
 public class ElevatorTest {
-
     @Test
     public void 엘레베이터는_층과_열림닫힘_상태를_가진다 () {
         Elevator ev = new Elevator();
@@ -13,20 +12,21 @@ public class ElevatorTest {
         assertNotNull(ev.getIsOpen());
     }
 
-    @Test void 엘레베이터는_도달목표층이_있음() {
+    @Test
+    public void 엘레베이터는_도달목표층이_있음() {
         Elevator ev = new Elevator();
         assertNotNull(ev.getTargetFloor());
 
     }
 
     @Test
-    public void 엘레베이터를_특정_층에서_누르면_엘레베이터가_도착한다() {
+    public void 엘레베이터를_특정_층에서_누르면_엘레베이터_목표층이_설정됨() {
         Elevator ev = new Elevator();
         ev.clickButton(4);
         assertEquals(4, ev.getTargetFloor());
 
         ev.clickButton(5);
-        assertEquals(4, ev.getTargetFloor());
+        assertEquals(5, ev.getTargetFloor());
     }
 
     @Test
@@ -39,6 +39,7 @@ public class ElevatorTest {
         assertEquals(4, ev.getFloor());
 
 
+        // 삼각측량.
         ev.clickButton(10);
         assertEquals(10, ev.getTargetFloor());
 
@@ -47,7 +48,11 @@ public class ElevatorTest {
         assertEquals(10, ev.getFloor());
     }
 
-    // 타겟플로어를 설정한 후 층이 그 쪽으로 이동.
+    //이동하기 전에는 문이 닫혀야 함.
+    @Test(expected = Exception.class)
+    public void 이동하기_전에_문이_닫혀야_함() {
+
+    }
 
     // 층으로 이동하면 문이 열린다.
 
