@@ -31,6 +31,15 @@ public class Elevator {
 
     public void setIsOpen(boolean isOpen) {
         this.isOpen = isOpen;
+        new java.util.Timer().schedule(
+            new java.util.TimerTask() {
+                @Override
+                public void run() {
+                    setIsOpen(false);
+                }
+            },
+            500
+        );
     }
 
     public void setFloor(int floor) {

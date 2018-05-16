@@ -90,10 +90,12 @@ public class ElevatorTest {
 
         ev.setIsOpen(true);
         assertEquals(true, ev.getIsOpen());
-        sleep(2000);
+        sleep(1000);
         assertEquals(false,ev.getIsOpen());
 
     }
+
+
     // 일정 시간이 지나면 문이 닫혀야 함.
 
 
