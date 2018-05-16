@@ -23,10 +23,28 @@ public class ElevatorTest {
     public void 엘레베이터를_특정_층에서_누르면_엘레베이터가_도착한다() {
         Elevator ev = new Elevator();
         ev.clickButton(4);
-        assertEquals(4, ev.getFloor());
+        assertEquals(4, ev.getTargetFloor());
 
         ev.clickButton(5);
+        assertEquals(4, ev.getTargetFloor());
+    }
+
+    @Test
+    public void 타겟층을_설정한후_그_층으로_이동() {
+        Elevator ev = new Elevator();
+
+        ev.clickButton(4);
+        assertEquals(4, ev.getTargetFloor());
+        ev.moveToTarget();
         assertEquals(4, ev.getFloor());
+
+
+        ev.clickButton(10);
+        assertEquals(10, ev.getTargetFloor());
+
+        assertNotEquals(10, ev.getFloor());
+        ev.moveToTarget();
+        assertEquals(10, ev.getFloor());
     }
 
     // 타겟플로어를 설정한 후 층이 그 쪽으로 이동.

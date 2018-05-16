@@ -5,7 +5,11 @@ public class Elevator {
     private boolean isOpen = false;
 
     public void clickButton(int floor) {
-        this.floor = floor;
+        this.targetFloor = floor;
+    }
+
+    public void moveToTarget() {
+        this.floor = this.targetFloor;
     }
 
     public static void main(){
