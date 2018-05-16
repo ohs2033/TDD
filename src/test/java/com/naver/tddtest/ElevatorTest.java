@@ -1,6 +1,8 @@
 package com.naver.tddtest;
 
 import org.junit.Test;
+
+import static java.lang.Thread.sleep;
 import static org.junit.Assert.*;
 
 
@@ -67,11 +69,33 @@ public class ElevatorTest {
         ev.clickButton(10);
         ev.moveToTarget();
 
-        System.out.println("HIHI");
-
     }
 
-    // 층으로 이동하면 문이 열린다.
+    @Test
+    public void 이동한_후에는_문이_열려야_함() throws Exception {
+        Elevator ev = new Elevator();
+
+        assertEquals(false, ev.getIsOpen());
+
+        ev.clickButton(10);
+        ev.moveToTarget();
+
+        assertEquals(true, ev.getIsOpen());
+    }
+
+
+    @Test
+    public void 일정_시간이_지나면_문이_닫혀야_함() throws Exception {
+        Elevator ev = new Elevator();
+
+        ev.setIsOpen(true);
+        assertEquals(true, ev.getIsOpen());
+        sleep(2000);
+        assertEquals(false,ev.getIsOpen());
+
+    }
+    // 일정 시간이 지나면 문이 닫혀야 함.
+
 
     // 여러 개 층을 입력한다면 여러 층이 모두 스택에 들어감.
 
