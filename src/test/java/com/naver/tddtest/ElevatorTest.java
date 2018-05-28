@@ -39,7 +39,7 @@ public class ElevatorTest {
         assertEquals(4, ev.getTargetFloor());
         ev.moveToTarget();
         assertEquals(4, ev.getFloor());
-
+        //문이 열리고 500ms -> 문이 닫히게 되는데
 
         // 삼각측량.
         ev.clickButton(10);
